@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/public.css" />
+    <link rel="stylesheet" type="text/css" href="css/css.css" />
+    <script src="js/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="js/public.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+<!--这里是 弹窗 -->
+    <!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <!--<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>-->
+    <!--<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+
+
+    <style>
+        .container{
+            width: 15%;
+            height: 600px;
+            float: left;
+        }
+        .container dl{
+            margin-bottom: 0;
+        }
+        .right{
+            width:85%;
+            height:600px;
+            float:right;
+            overflow-y: scroll;
+        }
+        .page{
+            padding-left: 50px;
+        }
+        .leftsidebar_box{
+            width: 100%;
+        }
+
+        .table-responsive{
+            width:80%;
+            margin:0 auto;
+
+        }
+        table th,td{
+            border: 1px solid #ccc;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="head">
+    <div class="headL">
+        酒店管理系统
+    </div>
+    <div class="headR">
+        <p class="p1">
+            欢迎,<%=username%>
+        </p>
+        <p class="p2">
+            <a href="#" class="resetPWD">重置密码</a>&nbsp;&nbsp;
+            <a href="/" class="goOut">退出</a>
+        </p>
+    </div>
+    <!-- onclick="{if(confirm(&quot;确定退出吗&quot;)){return true;}return false;}" -->
+</div>
+<div class="closeOut">
+    <div class="coDiv">
+        <p class="p1">
+            <span>X</span>
+        </p>
+        <p class="p2">确定退出当前用户？</p>
+        <P class="p3">
+            <a class="ok yes" href="#">确定</a><a class="ok no" href="#">取消</a>
+        </p>
+    </div>
+</div>
+<div class="bodys">
+    <!--左边-->
+    <div class="container">
+        <div class="leftsidebar_box">
+            <a href="/" ><div class="line">
+                    <img src="../img/coin01.png" />&nbsp;&nbsp;首页
+                </div></a>
+            <!-- <dl class="system_log">
+            <dt><img class="icon1" src="../img/coin01.png" /><img class="icon2"src="../img/coin02.png" />
+                首页<img class="icon3" src="../img/coin19.png" /><img class="icon4" src="../img/coin20.png" /></dt>
+        </dl> -->
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin03.png" />
+                    <img class="icon2" src="../img/coin04.png" />
+                    入住管理
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a class="cks" href="/datang" >大堂入住</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a class="cks" href="/dingdianruzhu" >
+                        订单入住</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+            </dl>
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin05.png" />
+                    <img class="icon2" src="../img/coin06.png" />
+                    退房管理
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a class="cks" href="/checkroom">退房管理</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+            </dl>
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin07.png" />
+                    <img class="icon2" src="../img/coin08.png" /> 记录查询
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a href="/showRecord" class="cks">入住记录查询</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+            </dl>
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin10.png" />
+                    <img class="icon2" src="../img/coin09.png" /> 房间管理
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a href="/RoomAmount" class="cks">房间管理</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a href="/fang" class="cks">房间状态</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+
+            </dl>
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin11.png" />
+                    <img class="icon2" src="../img/coin12.png" />
+                    房类管理
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a href="/Room"  class="cks">房间类别管理</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+            </dl>
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin14.png" />
+                    <img class="icon2" src="../img/coin13.png" /> 修改密码
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a href="/updatemima"  class="cks">修改密码</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+            </dl>
+
+        </div>
+    </div>
+    <!--右边-->
+    <div class="right">
+        <div class="pageTop">
+            <div class="page">
+                <img src="../img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
+                            href="#">公共管理</a>&nbsp;-</span>&nbsp;意见管理
+            </div>
+        </div>
+
+        <div class="rightbox">
+            <input type="button" class="btn btn-info btn-md" value="添加类型" data-toggle="modal" data-target="#myModal"/>
+            <div class="table-responsive ">
+                <table class="table">
+                    <thead>
+                    <tr>
+
+                        <th>房间类别</th>
+                        <th>类别名称</th>
+                        <th>面积</th>
+                        <th>床位数</th>
+                        <th>早餐</th>
+                        <th>网络</th>
+                        <th>电视</th>
+                        <th>价格</th>
+                        <th>房间数量</th>
+                        <th>剩余数量</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                </table>
+
+                <div id="pagenavbox"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--编辑员工-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    添加房类
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+
+            </div>
+            <!--房间类别-->
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">房间类别：</label>
+                        <div class="col-sm-8">
+                            <input type="number" min="1" name="CategoryID" class="form-control" id="lei" >
+                        </div>
+                    </div>
+                    <!--类别名称-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">类别名称:</label>
+                        <div class="col-sm-8">
+                            <input name="CategoryName" type="text"  class="form-control"  id="name" placeholder="请输入名字">
+                        </div>
+                    </div>
+
+                    <!--面积-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">面积:</label>
+                        <div class="col-sm-8">
+                            <input name="Area" type="number"  class="form-control"  id="Area" placeholder="请输入面积">
+                        </div>
+                    </div>
+
+                    <!--床位数-->
+
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">床位数:</label>
+                        <div class="col-sm-8">
+                            <input name="Bed" type="number"  min="1" max="10"  class="form-control"  id="Bed" >
+                        </div>
+                    </div>
+                    <!--早餐-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">早餐:</label>
+
+                        <label class="radio-inline">
+                            <input type="radio" name="Breakfast" checked  value="是" >是
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="Breakfast"  value="否"  > 否
+                        </label>
+                    </div>
+                    <!--网络-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">网络:</label>
+
+                        <label class="radio-inline">
+                            <input type="radio" name="Net" checked  value="是" >是
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="Net"  value="否"   > 否
+                        </label>
+                    </div>
+
+                    <!--电视-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">电视:</label>
+
+                        <label class="radio-inline">
+                            <input type="radio" name="TV" checked  value="是" >是
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="TV"  value="否"  > 否
+                        </label>
+                    </div>
+
+                    <!--价格-->
+
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">价格:</label>
+                        <div class="col-sm-8">
+                            <input name="Price" type="number"  min="1" max="1000000"  class="form-control"  id="Price" >
+                        </div>
+                    </div>
+                    <!--房间数量-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">房间数量:</label>
+                        <div class="col-sm-8">
+                            <input name="RoomAmount" value="0" type="number"  min="0" max="100"  class="form-control"  id="RoomAmount" >
+                        </div>
+                    </div>
+                    <!--剩余数量-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">剩余数量:</label>
+                        <div class="col-sm-8">
+                            <input name="LAmount" value="0" type="number"  min="0" max="100"  class="form-control"  id="LAmount" >
+                        </div>
+                    </div>
+
+
+                    <!--联系地址-->
+                    <!--<div class="form-group" >-->
+                    <!--<label for="lastname" class="col-sm-2 control-label" name="dizhi">地址：</label>-->
+                    <!--<div class="col-sm-8">-->
+                    <!--<textarea  name="dizhi"    class="form-control" rows="3"></textarea>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
+                </button>
+                <button id="addBtn2" type="button" class="btn btn-primary">
+                    Ok
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    添加房类
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+
+            </div>
+            <!--房间类别-->
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">房间类别：</label>
+                        <div class="col-sm-8">
+                            <input type="number" min="1" name="CategoryID" class="form-control" id="lei" >
+                        </div>
+                    </div>
+                    <!--类别名称-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">类别名称:</label>
+                        <div class="col-sm-8">
+                            <input name="CategoryName" type="text"  class="form-control"  id="name" placeholder="请输入名字">
+                        </div>
+                    </div>
+
+                    <!--面积-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">面积:</label>
+                        <div class="col-sm-8">
+                            <input name="Area" type="number"  class="form-control"  id="Area" placeholder="请输入面积">
+                        </div>
+                    </div>
+
+                    <!--床位数-->
+
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">床位数:</label>
+                        <div class="col-sm-8">
+                            <input name="Bed" type="number"  min="1" max="10"  class="form-control"  id="Bed" >
+                        </div>
+                    </div>
+                    <!--早餐-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">早餐:</label>
+
+                        <label class="radio-inline">
+                            <input type="radio" name="Breakfast" checked  value="是" >是
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="Breakfast"  value="否"  > 否
+                        </label>
+                    </div>
+                    <!--网络-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">网络:</label>
+
+                        <label class="radio-inline">
+                            <input type="radio" name="Net" checked  value="是" >是
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="Net"  value="否"   > 否
+                        </label>
+                    </div>
+
+                    <!--电视-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">电视:</label>
+
+                        <label class="radio-inline">
+                            <input type="radio" name="TV" checked  value="是" >是
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="TV"  value="否"  > 否
+                        </label>
+                    </div>
+
+                    <!--价格-->
+
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">价格:</label>
+                        <div class="col-sm-8">
+                            <input name="Price" type="number"  min="1" max="1000000"  class="form-control"  id="Price" >
+                        </div>
+                    </div>
+                    <!--房间数量-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">房间数量:</label>
+                        <div class="col-sm-8">
+                            <input name="RoomAmount"  type="number"  min="0" max="100"  class="form-control"  id="RoomAmount" >
+                        </div>
+                    </div>
+                    <!--剩余数量-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">剩余数量:</label>
+                        <div class="col-sm-8">
+                            <input name="LAmount" type="number"  min="0" max="100"  class="form-control"  id="LAmount" >
+                        </div>
+                    </div>
+
+
+                    <!--联系地址-->
+                    <!--<div class="form-group" >-->
+                    <!--<label for="lastname" class="col-sm-2 control-label" name="dizhi">地址：</label>-->
+                    <!--<div class="col-sm-8">-->
+                    <!--<textarea  name="dizhi"    class="form-control" rows="3"></textarea>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
+                </button>
+                <button id="addBtn3" type="button" class="btn btn-primary">
+                    Ok
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<script type="text/javascript" src="js/PageNav.js"></script>
+<script>
+    $.get("/getalls" ,function(data){
+        // console.log(data.results);
+        // var datas=data.results;
+        // datas.forEach(function (i,n) {
+        //
+        // })
+
+    })
+
+    $.get("/doadd?page=1", function (data) {
+        new PageNav({
+            boxid: "pagenavbox",
+            page: 1,
+            pageAmount: data.pageAmount,
+            change: function (pagenumber) {
+                gotopage(pagenumber);
+            }
+        });
+        gotopage(1);
+    });
+
+
+
+    // 展示所有的数据
+
+    function gotopage(pagenumber) {
+        $("#tbody").empty();
+        $.get("/doadd?page=" + pagenumber, function (data) {
+            console.log(data);
+            $.each(data.results, function (i, n) {
+                //创建一个tr标签
+                $tr = $("<tr class='shows'></tr>");
+                $("<td></td>").html(n.CategoryID).appendTo($tr);
+                $("<td></td>").html(n.CategoryName).appendTo($tr);
+                $("<td></td>").html(n.Area).appendTo($tr);
+                $("<td></td>").html(n.Bed).appendTo($tr);
+                $("<td></td>").html(n.Breakfast).appendTo($tr);
+                $("<td></td>").html(n.Net).appendTo($tr);
+                $("<td></td>").html(n.TV).appendTo($tr);
+                $("<td></td>").html(n.Price).appendTo($tr);
+                $("<td></td>").html(n.RoomAmount).appendTo($tr);
+                $("<td></td>").html(n.LAmount).appendTo($tr);
+                $("<td></td>").html("<button data_id='n.CategoryID' type='button' data-toggle='modal' data-target='#myModal1' class='update' class='work update'>修改</button> <button data_id="+n.CategoryID+"  type='button' class='work del'>删除</button>").appendTo($tr);
+                //上树
+                $tr.appendTo($("#tbody"));
+            });
+        });
+    }
+
+
+
+
+    //增加
+    $("#addBtn2").click(function () {
+        $.post("/doadd", {
+            CategoryID: parseInt($("input[name=CategoryID]").val()),
+            CategoryName: $("input[name=CategoryName]").val(),
+            Area: $("input[name=Area]").val(),
+            Bed: $("input[name=Bed]").val(),
+            Breakfast: $("input[name=Breakfast]").val(),
+            Net: $("input[name=Net]").val(),
+            TV: $("input[name=TV]").val(),
+            Price: $("input[name=Price]").val(),
+            RoomAmount: $("input[name=RoomAmount]").val(),
+            LAmount: $("input[name=LAmount]").val()
+        }, function (data) {
+            if (data.result == 1) {
+                alert("提交成功！");
+                window.location.href = '/Room';
+                $("input[type=text]").val("");
+            } else if (data.result == -1) {
+                alert("提交失败,被占用！");
+            } else if (data.result == -2) {
+                alert("服务器错误！请联系管理员，怎么联系我也不知道！");
+            }
+        })
+    });
+
+
+    // 修改
+    //修改
+    $("#tbody").delegate(".update", "click", function () {
+        var This = $(this).parent().parent().children();
+        var sid = $(This).eq(0).html();
+        $.get("/rtype/"+sid,function (data) {
+            console.log(data);
+            if (data.result==-1){
+                alert("查无此人")
+            }else{
+                $("#myModal1 input[name=CategoryID]").val(data.result.CategoryID);
+                $("#myModal1 input[name=CategoryName]").val(data.result.CategoryName);
+                $("#myModal1 input[name=Area]").val(data.result.Area);
+                $("#myModal1 input[name=Bed]").val(data.result.Bed);
+                $("#myModal1 input[name=Breakfast]").val(data.result.Breakfast);
+                $("#myModal1 input[name=Net]").val(data.result.Net);
+                $("#myModal1 input[name=TV]").val(data.result.TV);
+                $("#myModal1 input[name=Price]").val(data.result.Price);
+                $("#myModal1 input[name=RoomAmount]").val(data.result.RoomAmount);
+                $("#myModal1 input[name=LAmount]").val(data.result.LAmount);
+            }
+        })
+    })
+
+    $(" #addBtn3").click(function () {
+
+        var  sid = parseInt($("#myModal1 input[name=CategoryID]").val());
+        console.log(sid);
+        $.post("/rtype/" + sid,{
+            CategoryID: parseInt($("#myModal1 input[name=CategoryID]").val()),
+            CategoryName: $("#myModal1 input[name=CategoryName]").val(),
+            Area: $("#myModal1 input[name=Area]").val(),
+            Bed: $("#myModal1 input[name=Bed]").val(),
+            Breakfast: $("#myModal1 input[name=Breakfast]").val(),
+            Net: $("#myModal1 input[name=Net]").val(),
+            TV: $("#myModal1 input[name=TV]").val(),
+            Price: $("#myModal1 input[name=Price]").val(),
+            RoomAmount: $("#myModal1 input[name=RoomAmount]").val(),
+            LAmount: $("#myModal1 input[name=LAmount]").val()
+        },function(data){
+            if(data.result == 1){
+                window.location = "/Room";
+            }else{
+                alert("服务器错误！请联系管理员，怎么联系我也不知道！");
+            }
+        })
+    })
+
+
+    //删除
+    $("#tbody").delegate(".del", "click", function () {
+        var This = $(this).parents().children();
+        var sid = $(this).attr("data_id");
+        console.log(sid);
+        $.ajax({
+            url: "/doadd/" + sid,
+            type: "delete",
+            success: function (data) {
+                if (data.result == 1) {
+                    alert("删除成功");
+                    This.parents("tr").remove();
+                    window.location.href = '/Room'
+                } else {
+                    alert("服务器错误！");
+                }
+            }
+        });
+        $.ajax({
+            url: "/tuifang/" + sid,
+            type: "delete",
+            success: function (data) {
+                if (data.result == 1) {
+                } else {
+                    alert("服务器错误！");
+                }
+            }
+        });
+        $.ajax({
+            url: "/yudingtuifang/" + sid,
+            type: "delete",
+            success: function (data) {
+                if (data.result == 1) {
+                    console.log("成功退房")
+
+                } else if(data.result==-2){
+                    alert("服务器错误！");
+                }
+            }
+        });
+
+    })
+
+
+</script>
+</body>
+</html>

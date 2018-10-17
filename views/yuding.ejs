@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/public.css" />
+    <link rel="stylesheet" type="text/css" href="css/css.css" />
+    <script src="js/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="js/public.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <style>
+        body{
+            background: url(img/timg.jpg)  no-repeat;
+            background-size: 100%;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 80%;
+            margin: 0 auto;
+        }
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+        ul li {
+            list-style: none;
+        }
+        .nav{
+            width: 80%;
+            margin: 5% auto;
+        }
+        .nav ul{
+            display: flex;
+            border-radius: 7px;
+        }
+        .nav ul li{
+            flex:1;
+            text-align: center;
+            background: rgba(255,255,255,.7);
+            font-size: 200%;
+            padding: 20px;
+        }
+        .nav ul li:first-child{
+            border-bottom-left-radius: 7px;
+            border-top-left-radius: 7px;
+        }
+        .nav ul li:last-child{
+            border-bottom-right-radius: 7px;
+            border-top-right-radius: 7px;
+        }
+        .boxy form p{
+            line-height: 200%;
+
+        }
+        .boxy{
+            width: 50%;
+            background:rgba(255,255,255,.7);
+        }
+        .boxy form{
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="nav">
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="/yuding">在线预订</a></li>
+            <li><a href="/chaxun">订单查询</a></li>
+            <li><a href="/sign">酒店管理</a></li>
+            <li><a href="#">关于我们</a></li>
+        </ul>
+    </div>
+    <div class="boxy">
+        <form action="" method="post">
+            <p>
+                入住日期: <input name="comeday" type="date">
+            </p>
+            <p>
+                离店日期: <input name="goday" type="date">
+            </p>
+            <p>
+                房间类型: <select class="select" name="leixing" id=""></select>
+            </p>
+            <!--<p>-->
+                <!--房间号: <select class="fangjian" name="fangjian" id=""></select>-->
+            <!--</p>-->
+
+            <p>
+                房间剩余数量: <span class="yumuch">0</span>
+                价格: <span class="daymoney">0元</span>/每天
+            </p>
+            <p>
+                预订数量: <input name="shuliang" max="10" min="0" type="number">
+            </p>
+            <p>
+                入住人姓名: <input name="name" type="text">
+            </p>
+            <p>
+                联系人: <input name="rename" type="text">
+            </p>
+            <p>
+                联系电话: <input  name="phone" type="number">
+            </p>
+            <p style="height: 70px;">
+                留言: <textarea id="text" name="liuyan" class="liuyan" id="liuyan" ></textarea>
+            </p>
+        </form>
+        <p style="margin-left: 70px;padding-bottom: 20px;">
+            <button id="btn">提交订单</button>
+            <button id="reset">重置</button>
+            <button id="close">关闭本页</button>
+        </p>
+
+
+    </div>
+
+</div>
+
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/PageNav.js"></script>
+<script type="text/javascript" src="js/underscore-min.js"></script>
+<script>
+    //房间类别
+    $.get("/leibief",function(data){
+
+        var str="";
+        var datas=data.result;
+        for(var i=0;i<datas.length;i++){
+            str="<option>"+datas[i].CategoryName+"</option>";
+            $(".select").append(str);
+        }
+    })
+
+    //房间号
+    $(".select").click(function () {
+        var typename=$(this).val();
+        $.get("/fanghao",function(data){
+
+            $(".fangjian").empty();
+            var str="";
+            var datas=data.result;
+            var num=0;
+            console.log(data)
+            $.each(datas, function (i, n) {
+
+                console.log(n.RCategory);
+                if(n.RCategory==typename&&n.RoomStatus=="未入住"){
+                    num++;
+                    // str="<option>"+n.RID+"</option>";
+                    // $(".fangjian").append(str);
+                }
+            })
+            $(".yumuch").html(num);
+            $("input[name=shuliang]").attr("max",num);
+        })
+    })
+
+    // 价格
+    $(".select").click(function () {
+        console.log($(this).val())
+        var typename=$(this).val();
+        $.get("/jiagef",function(data){
+            console.log(data);
+            var data=data.result;
+            $.each(data, function (i, n) {
+                if(n.CategoryName==typename){
+                    $(".daymoney").html(data[i].Price)
+                }
+            })
+        })
+
+        // 状态值
+    })
+
+    $("#reset").click(function () {
+        $("input[type=text]").val("");
+        $("input[type=date]").val("");
+        $("#text").val("");
+    })
+    $("#close").click(function () {
+        window.location="/"
+    })
+
+
+    $("#btn").click(function () {
+        $.post("/yuding", {
+            comeday: $("input[name=comeday]").val(),
+            goday: $("input[name=goday]").val(),
+            leixing: $(".select").val(),
+            shuliang: $("input[name=shuliang]").val(),
+            name: $("input[name=name]").val(),
+            rename: $("input[name=rename]").val(),
+            phone: $("input[name=phone]").val(),
+            liuyan: $(".liuyan").val()
+        }, function (data) {
+            if (data.result == 1) {
+                alert("提交成功！");
+                window.location.href = '/';
+            } else if (data.result == -1) {
+                alert("提交失败,被占用！");
+            } else if (data.result == -2) {
+                alert("服务器错误！请联系管理员，怎么联系我也不知道！");
+            }
+        })
+    });
+
+</script>
+</body>
+</html>

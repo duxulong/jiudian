@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>增加学生 - 小小学生管理系统V2</title>
+
+    <style type="text/css">
+        .alert{
+            padding: 0 15px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER END-->
+<!-- MENU SECTION END-->
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">注册</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1">
+                <p>
+                    账号：
+                </p>
+            </div>
+            <div class="col-md-5">
+                <p>
+                    <input type="text" class="form-control" name="username">
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <p>
+                    密码：
+                </p>
+            </div>
+            <div class="col-md-5">
+                <p>
+                    <input type="text" class="form-control" name="password">
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-5">
+                <button class="btn btn-success" id="btn">提交</button>
+            </div>
+        </div>
+    </div>
+    <!--  end  Context Classes  --> </div>
+</div>
+<script src="js/jquery-1.12.3.min.js"></script>
+<script type="text/javascript">
+    //点击提交按钮的时候做的事情
+    $("#btn").click(function(){
+        $.post("/add",{
+            "username": $("input[name=username]").val(),
+            "password": parseInt($("input[name=password]").val()),
+        },function(data){
+            console.log(data);
+            if(data.result == 1){
+                alert("提交成功！");
+                $("input[type=text]").val("");
+            }else if(data.result == -1){
+                alert("提交失败，学号被占用！");
+            }else if(data.result == -2){
+                alert("服务器错误！请联系管理员，怎么联系我也不知道！");
+            }
+        })
+    });
+
+
+    //得到焦点的时候，提示框消失
+    $("input[name=sid]").focus(function(){
+        $("#sid_tip").hide();
+    });
+</script>
+
+</div>
+</div>
+<!-- CONTENT-WRAPPER SECTION END-->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+            </div>
+
+        </div>
+    </div>
+</footer>
+<!-- FOOTER SECTION END-->
+
+
+
+</body>
+</html>

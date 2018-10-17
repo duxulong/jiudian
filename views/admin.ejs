@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/public.css" />
+    <link rel="stylesheet" type="text/css" href="css/css.css" />
+    <script src="js/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="js/public.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        .container{
+            width: 15%;
+            height: 600px;
+            float: left;
+        }
+        .container dl{
+            margin-bottom: 0;
+        }
+        .right{
+            width:85%;
+            height:600px;
+            float:right;
+            overflow-y: scroll;
+        }
+        .page{
+            padding-left: 50px;
+        }
+        .leftsidebar_box{
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+<div class="head">
+    <div class="headL">
+        酒店管理系统
+    </div>
+    <div class="headR">
+        <p class="p1">
+            欢迎,<%=username%>
+        </p>
+        <p class="p2">
+            <a href="#" class="resetPWD">重置密码</a>&nbsp;&nbsp;
+            <a href="/" class="goOut">退出</a>
+        </p>
+    </div>
+    <!-- onclick="{if(confirm(&quot;确定退出吗&quot;)){return true;}return false;}" -->
+</div>
+<div class="closeOut">
+    <div class="coDiv">
+        <p class="p1">
+            <span>X</span>
+        </p>
+        <p class="p2">确定退出当前用户？</p>
+        <P class="p3">
+            <a class="ok yes" href="#">确定</a><a class="ok no" href="#">取消</a>
+        </p>
+    </div>
+</div>
+<div class="bodys">
+    <!--左边-->
+    <div class="container">
+        <div class="leftsidebar_box">
+            <a href="/" ><div class="line">
+                    <img src="../img/coin01.png" />&nbsp;&nbsp;首页
+                </div></a>
+            <!-- <dl class="system_log">
+            <dt><img class="icon1" src="../img/coin01.png" /><img class="icon2"src="../img/coin02.png" />
+                首页<img class="icon3" src="../img/coin19.png" /><img class="icon4" src="../img/coin20.png" /></dt>
+        </dl> -->
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin03.png" />
+                    <img class="icon2" src="../img/coin04.png" />
+                    入住管理
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a class="cks" href="/datang" >大堂入住</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a class="cks" href="/dingdianruzhu" >
+                        订单入住</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+            </dl>
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin05.png" />
+                    <img class="icon2" src="../img/coin06.png" />
+                    退房管理
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a class="cks" href="/checkroom">退房管理</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+            </dl>
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin07.png" />
+                    <img class="icon2" src="../img/coin08.png" /> 记录查询
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a href="/showRecord" class="cks">入住记录查询</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+            </dl>
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin10.png" />
+                    <img class="icon2" src="../img/coin09.png" /> 房间管理
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a href="/RoomAmount" class="cks">房间管理</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a href="/fang" class="cks">房间状态</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+
+            </dl>
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin11.png" />
+                    <img class="icon2" src="../img/coin12.png" />
+                    房类管理
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a href="/Room"  class="cks">房间类别管理</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+            </dl>
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin14.png" />
+                    <img class="icon2" src="../img/coin13.png" /> 修改密码
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a href="/updatemima"  class="cks">修改密码</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+            </dl>
+
+        </div>
+    </div>
+    <!--右边-->
+    <div class="right">
+        <div class="pageTop">
+            <div class="page">
+                <img src="../img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
+                            href="#">公共管理</a>&nbsp;-</span>&nbsp;意见管理
+            </div>
+        </div>
+
+        <div class="img" style="height:100%;color: #999;font-size: 100px;font-weight: bold;text-align: center;">
+            欢迎登陆
+        </div>
+    </div>
+</div>
+<script>
+</script>
+</body>
+</html>

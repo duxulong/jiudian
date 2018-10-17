@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/public.css" />
+    <link rel="stylesheet" type="text/css" href="css/css.css" />
+    <script src="js/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="js/public.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!--这里是 弹窗 -->
+    <!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <!--<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>-->
+    <!--<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+
+
+    <style>
+        .container{
+            width: 15%;
+            height: 600px;
+            float: left;
+        }
+        .container dl{
+            margin-bottom: 0;
+        }
+        .right{
+            width:85%;
+            height:600px;
+            float:right;
+            overflow-y: scroll;
+        }
+        .page{
+            padding-left: 50px;
+        }
+        .leftsidebar_box{
+            width: 100%;
+        }
+
+        .table-responsive{
+            width:80%;
+            margin:0 auto;
+
+        }
+        table th,td{
+            border: 1px solid #ccc;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="head">
+    <div class="headL">
+        酒店管理系统
+    </div>
+    <div class="headR">
+        <p class="p1">
+            欢迎,<%=username%>
+        </p>
+        <p class="p2">
+            <a href="#" class="resetPWD">重置密码</a>&nbsp;&nbsp;
+            <a href="/" class="goOut">退出</a>
+        </p>
+    </div>
+    <!-- onclick="{if(confirm(&quot;确定退出吗&quot;)){return true;}return false;}" -->
+</div>
+<div class="closeOut">
+    <div class="coDiv">
+        <p class="p1">
+            <span>X</span>
+        </p>
+        <p class="p2">确定退出当前用户？</p>
+        <P class="p3">
+            <a class="ok yes" href="#">确定</a><a class="ok no" href="#">取消</a>
+        </p>
+    </div>
+</div>
+<div class="bodys">
+    <!--左边-->
+    <div class="container">
+        <div class="leftsidebar_box">
+            <a href="/" ><div class="line">
+                    <img src="../img/coin01.png" />&nbsp;&nbsp;首页
+                </div></a>
+            <!-- <dl class="system_log">
+            <dt><img class="icon1" src="../img/coin01.png" /><img class="icon2"src="../img/coin02.png" />
+                首页<img class="icon3" src="../img/coin19.png" /><img class="icon4" src="../img/coin20.png" /></dt>
+        </dl> -->
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin03.png" />
+                    <img class="icon2" src="../img/coin04.png" />
+                    入住管理
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a class="cks" href="/datang" >大堂入住</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a class="cks" href="/dingdianruzhu" >
+                        订单入住</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+            </dl>
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin05.png" />
+                    <img class="icon2" src="../img/coin06.png" />
+                    退房管理
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a class="cks" href="/checkroom">退房管理</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+            </dl>
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin07.png" />
+                    <img class="icon2" src="../img/coin08.png" /> 记录查询
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a href="/showRecord" class="cks">入住记录查询</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+            </dl>
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin10.png" />
+                    <img class="icon2" src="../img/coin09.png" /> 房间管理
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a href="/RoomAmount" class="cks">房间管理</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a href="/fang" class="cks">房间状态</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+
+            </dl>
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin11.png" />
+                    <img class="icon2" src="../img/coin12.png" />
+                    房类管理
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a href="/Room"  class="cks">房间类别管理</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+            </dl>
+            <dl class="system_log">
+                <dt>
+                    <img class="icon1" src="../img/coin14.png" />
+                    <img class="icon2" src="../img/coin13.png" /> 修改密码
+                    <img class="icon3" src="../img/coin19.png" />
+                    <img class="icon4" src="../img/coin20.png" />
+                </dt>
+                <dd>
+                    <img class="coin11" src="../img/coin111.png" />
+                    <img class="coin22" src="../img/coin222.png" />
+                    <a href="/updatemima"  class="cks">修改密码</a>
+                    <img class="icon5" src="../img/coin21.png" />
+                </dd>
+            </dl>
+
+        </div>
+    </div>
+    <!--右边-->
+    <div class="right">
+        <div class="pageTop">
+            <div class="page">
+                <img src="../img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
+                            href="#">公共管理</a>&nbsp;-</span>&nbsp;意见管理
+            </div>
+        </div>
+
+        <div class="rightbox">
+            <input type="button" class="btn btn-info btn-md" value="添加类型" data-toggle="modal" data-target="#myModal"/>
+            <div class="table-responsive ">
+                <table class="table">
+                    <thead>
+                    <tr>
+
+
+                        <th>房间号</th>
+                        <th>房间类型</th>
+                        <th>房间位置</th>
+                        <th>房间描述</th>
+                        <th>房间状态</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                </table>
+
+                <div id="pagenavbox"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--编辑员工-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    添加房间
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+
+            </div>
+            <!--房间号-->
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">房间号：</label>
+                        <div class="col-sm-8">
+                            <input type="number" min="1000" max="9999" name="RID" class="form-control" id="lei" >
+                        </div>
+                    </div>
+                    <!--房间类型-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">类别名称:</label>
+                        <div class="col-sm-8">
+                            <select class="select" name="RCategory" id="selects"></select>
+                        </div>
+                    </div>
+
+                    <!--位置-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">房间位置:</label>
+                        <div class="col-sm-8">
+                            <input name="RLocation" type="text"  class="form-control"  id="Area" placeholder="请输入房间位置">
+                        </div>
+                    </div>
+
+
+                    <!--描述-->
+                    <div class="form-group" >
+                        <label for="lastname" class="col-sm-2 control-label" name="dizhi">房间描述：</label>
+                        <div class="col-sm-8">
+                            <textarea  name="RoomRemarks"    class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+
+
+
+                    <!--入住情况-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">是否入住:</label>
+
+                        <label class="radio-inline">
+                            <input type="radio" name="RoomStatus" checked  value="未入住" >未入住
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="RoomStatus"  value="已入住"   > 已入住
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
+                </button>
+                <button id="addBtn2" type="button" class="btn btn-primary">
+                    Ok
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    添加房间
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+
+            </div>
+            <!--房间号-->
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">房间号：</label>
+                        <div class="col-sm-8">
+                            <input type="number" min="1000" max="9999" name="RID" class="form-control" id="lei" >
+                        </div>
+                    </div>
+                    <!--房间类型-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">类别名称:</label>
+                        <div class="col-sm-8">
+                            <select class="select" name="RCategory" id="selects"></select>
+                        </div>
+                    </div>
+
+                    <!--位置-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">房间位置:</label>
+                        <div class="col-sm-8">
+                            <input name="RLocation" type="text"  class="form-control"  id="Area" placeholder="请输入房间位置">
+                        </div>
+                    </div>
+
+
+                    <!--描述-->
+                    <div class="form-group" >
+                        <label for="lastname" class="col-sm-2 control-label" name="dizhi">房间描述：</label>
+                        <div class="col-sm-8">
+                            <textarea  name="RoomRemarks"    class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+
+
+
+                    <!--入住情况-->
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">是否入住:</label>
+
+                        <label class="radio-inline">
+                            <input type="radio" name="RoomStatus" checked  value="未入住" >未入住
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="RoomStatus"  value="已入住"   > 已入住
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
+                </button>
+                <button id="addBtn3" type="button" class="btn btn-primary">
+                    Ok
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+<script type="text/javascript" src="js/PageNav.js"></script>
+<script>
+    //类型
+    $.get("/leibief",function(data){
+        var str="";
+        var datas=data.result;
+        for(var i=0;i<datas.length;i++){
+            str="<option>"+datas[i].CategoryName+"</option>";
+            $(".select").append(str);
+        }
+    })
+
+
+
+    $.get("/doaddfh?page=1", function (data) {
+        new PageNav({
+            boxid: "pagenavbox",
+            page: 1,
+            pageAmount: data.pageAmount,
+            change: function (pagenumber) {
+                gotopage(pagenumber);
+            }
+        });
+        gotopage(1);
+    });
+    //
+    // // 展示所有的数据
+
+    function gotopage(pagenumber) {
+        $("#tbody").empty();
+        $.get("/doaddfh?page="+pagenumber, function(data) {
+            console.log(data.results)
+            $.each(data.results, function (i, n) {
+                //创建一个tr标签
+                $tr = $("<tr class='shows'></tr>");
+                $("<td></td>").html(n.RID).appendTo($tr);
+                $("<td></td>").html(n.RCategory).appendTo($tr);
+                $("<td></td>").html(n.RLocation).appendTo($tr);
+                $("<td></td>").html(n.RoomRemarks).appendTo($tr);
+                $("<td></td>").html(n.RoomStatus).appendTo($tr);
+                $("<td></td>").html("<button data_id="+n.RID+" type='button' data-toggle='modal' data-target='#myModal1' class='update' class='work update'>修改</button> <button data_id="+n.RID+"  type='button' class='work del'>删除</button>").appendTo($tr);
+                //上树
+                $tr.appendTo($("#tbody"));
+            });
+        });
+    }
+
+
+    //增加
+    var zongshu=0;
+    $("#addBtn2").click(function () {
+
+        $.post("/doaddfh", {
+            RID: parseInt($("input[name=RID]").val()),
+            RCategory: $(".select").val(),
+            RLocation: $("input[name=RLocation]").val(),
+            RoomRemarks: $("textarea[name=RoomRemarks]").val(),
+            RoomStatus: $("input[name=RoomStatus]").val(),
+        }, function (data) {
+            if (data.result == 1) {
+                alert("提交成功！");
+                // zongshu++;
+                // $.post("fangshu",{
+                //     CategoryName:$(".select").val(),
+                //     RoomAmount:zongshu
+                // },function(data){
+                //
+                // })
+                window.location.href = '/RoomAmount';
+
+                $("input[type=text]").val("");
+            } else if (data.result == -1) {
+                alert("提交失败,被占用！");
+            } else if (data.result == -2) {
+                alert("服务器错误！请联系管理员，怎么联系我也不知道！");
+            }
+        })
+    });
+    //
+    // function zengjia(CategoryName,RoomAmount){
+    //
+    // }
+
+
+    //修改
+    $("#tbody").delegate(".update", "click", function () {
+        var This = $(this).parent().parent().children();
+        var sid = $(this).attr("data_id")
+        $.get("/fhtype/"+sid,function (data) {
+            console.log(data);
+            if (data.result==-1){
+                alert("查无此人")
+            }else{
+                $("#myModal1 input[name=RID]").val(data.result.RID);
+                $("#myModal1 .select option").val(data.result.RCategory);
+                $("#myModal1 input[name=RLocation]").val(data.result.RLocation);
+                $("#myModal1 textarea[name=RoomRemarks]").val(data.result.RoomRemarks);
+                $("#myModal1 input[name=RoomStatus]").val(data.result.RoomStatus);
+            }
+        })
+    })
+
+    $(" #addBtn3").click(function () {
+
+        var  sid = parseInt($("#myModal1 input[name=RID]").val());
+        console.log(sid);
+        $.post("/fhtype/" + sid,{
+            RID: parseInt($("#myModal1 input[name=RID]").val()),
+            RCategory: $("#myModal1 #selects").val(),
+            RLocation: $("#myModal1 input[name=RLocation]").val(),
+            RoomRemarks: $("#myModal1 textarea[name=RoomRemarks]").val(),
+            RoomStatus: $("#myModal1 input[name=RoomStatus]").val(),
+        },function(data){
+            if(data.result == 1){
+                window.location = "/RoomAmount";
+            }else{
+                alert("服务器错误！请联系管理员，怎么联系我也不知道！");
+            }
+        })
+    })
+
+
+    ///删除
+    $("#tbody").delegate(".del", "click", function () {
+        console.log(111)
+        var This = $(this).parents().children();
+        var sid = $(this).attr("data_id");
+        console.log(sid)
+        $.ajax({
+            url: "/doaddfh/" + sid,
+            type: "delete",
+            success: function (data) {
+                if (data.result == 1) {
+                    alert("删除成功");
+                    This.parents("tr").remove();
+                    window.location.href = '/RoomAmount'
+                } else {
+                    alert("服务器错误！");
+                }
+            }
+        });
+
+    })
+
+</script>
+</body>
+</html>
